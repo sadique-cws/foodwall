@@ -1,8 +1,14 @@
+import { useEffect, useState } from "react"
 
 const OrderContainer = ({oData}) => {
+    const [total, setTotal] = useState(0);
+   useEffect(() => {
+            setTotal(oData.reduce((sum, current) => sum + (current.qty * current.amount), 0))
+   }, [oData])
   return (
     <div className='flex flex-1 p-3'>
-        <table className=" w-full">
+       <div className="overflow-y-scroll h-[550px] flex-1 py-3">
+         <table className=" w-full">
             <thead>
                 <tr>
                     <th className="border p-3 border-sky-500">Product Name</th>
@@ -23,6 +29,11 @@ const OrderContainer = ({oData}) => {
                 
             </tbody>
         </table>
+       </div>
+
+        <div className="flex fixed bottom-5 px-10 w-full">
+            <h1 className="text-3xl font-bold">Total Amount : {total}</h1>
+        </div>
     </div>
   )
 }

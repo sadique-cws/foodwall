@@ -5,7 +5,7 @@ import OrderContainer from './components/OrderContainer'
 import { orderData } from './data';
 
 function App(props) {
-    let [oData, setOData] = useState(orderData);
+    let [oData, setOData] = useState([]);
 
   return (
     <div className='bg-slate-100 h-screen'>
